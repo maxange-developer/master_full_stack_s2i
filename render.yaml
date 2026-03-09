@@ -33,15 +33,13 @@ services:
       - key: TAVILY_API_KEY
         sync: false
       - key: CORS_ORIGINS
-        sync: false
+        value: https://master-start2impact.onrender.com
 
   # ---------- Frontend ----------
-  - type: web
+  - type: static
     name: tenerife-frontend
-    runtime: static
-    rootDir: frontend
-    buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
 
     headers:
       - path: /assets/*
