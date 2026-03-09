@@ -31,7 +31,7 @@ app.use(
     credentials: false,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 
 /**
@@ -85,7 +85,7 @@ async function startServer() {
       console.log("🚀 ========================================");
       console.log(`✅ Server running on http://localhost:${settings.PORT}`);
       console.log(
-        `✅ API endpoint: http://localhost:${settings.PORT}${settings.API_V1_STR}`
+        `✅ API endpoint: http://localhost:${settings.PORT}${settings.API_V1_STR}`,
       );
       console.log(`✅ Environment: ${process.env.NODE_ENV || "development"}`);
       console.log("🚀 ========================================");

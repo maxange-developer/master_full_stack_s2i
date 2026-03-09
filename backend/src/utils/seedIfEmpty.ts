@@ -12,12 +12,14 @@ import { Article } from "../models/blog";
 
 const articles = [
   {
-    title: "Parco Nazionale del Teide: Manuale Definitivo tra Vulcani, Sentieri e Stelle",
+    title:
+      "Parco Nazionale del Teide: Manuale Definitivo tra Vulcani, Sentieri e Stelle",
     slug: "parco-nazionale-teide",
     category: "natura",
     image_url: "/images/blog/teide-1.jpg",
     image_slug: "teide-1",
-    excerpt: "Il Parco Nazionale del Teide è il cuore pulsante di Tenerife: un Patrimonio UNESCO con vulcani, sentieri e uno dei migliori cieli stellati al mondo.",
+    excerpt:
+      "Il Parco Nazionale del Teide è il cuore pulsante di Tenerife: un Patrimonio UNESCO con vulcani, sentieri e uno dei migliori cieli stellati al mondo.",
     content: `Il Parco Nazionale del Teide è il cuore pulsante di Tenerife e uno dei paesaggi vulcanici più spettacolari al mondo. Dichiarato Patrimonio dell'Umanità UNESCO, racchiude una caldera di circa 17 km di diametro (le Cañadas) con al centro il maestoso Teide (3.718 m), la vetta più alta di Spagna.
 
 ## Come Raggiungere il Parco
@@ -44,7 +46,8 @@ Il Teide è una delle migliori Starlight Reserve al mondo. Diverse agenzie organ
     category: "divertimento",
     image_url: "/images/blog/siam-park-1.webp",
     image_slug: "siam-park-1",
-    excerpt: "Siam Park a Costa Adeje è il parco acquatico numero uno al mondo: adrenalina, relax e un tema thailandese curato nei minimi dettagli.",
+    excerpt:
+      "Siam Park a Costa Adeje è il parco acquatico numero uno al mondo: adrenalina, relax e un tema thailandese curato nei minimi dettagli.",
     content: `Siam Park, a Costa Adeje, è molto più di un parco acquatico: è un vero parco tematico a tema thailandese, curato nei minimi dettagli, tra statue, giardini esotici e specchi d'acqua.
 
 ## Organizzare la Visita
@@ -73,7 +76,8 @@ Porta ciabatte antiscivolo, usa gli armadietti e applica spesso crema solare res
     category: "natura",
     image_url: "/images/blog/anaga-1.webp",
     image_slug: "anaga-1",
-    excerpt: "Il Parco Rurale di Anaga conserva una foresta di laurisilva preistorica: sentieri tra nebbie, alberi contorti e villaggi rurali fuori dal tempo.",
+    excerpt:
+      "Il Parco Rurale di Anaga conserva una foresta di laurisilva preistorica: sentieri tra nebbie, alberi contorti e villaggi rurali fuori dal tempo.",
     content: `Il Parco Rurale di Anaga, nel nord-est di Tenerife, è uno dei luoghi più magici dell'isola. Conserva una foresta di laurisilva che un tempo ricopriva gran parte dell'Europa meridionale.
 
 ## Accessi Principali
@@ -97,12 +101,14 @@ Anaga è spesso coperta da nubi basse. Usa scarpe da trekking e porta una giacca
 Fermati a Taganana per i ristoranti di pesce, o nei piccoli paesi rurali per formaggi con mojo e puchero.`,
   },
   {
-    title: "Whale Watching a Tenerife: Guida Etica all'Avvistamento di Balene e Delfini",
+    title:
+      "Whale Watching a Tenerife: Guida Etica all'Avvistamento di Balene e Delfini",
     slug: "whale-watching-tenerife",
     category: "natura",
     image_url: "/images/blog/adeje-1.webp",
     image_slug: "adeje-1",
-    excerpt: "Il mare tra Tenerife e La Gomera è uno dei migliori spot europei per vedere cetacei: globicefali e delfini in un habitat naturale unico.",
+    excerpt:
+      "Il mare tra Tenerife e La Gomera è uno dei migliori spot europei per vedere cetacei: globicefali e delfini in un habitat naturale unico.",
     content: `Il tratto di mare tra Tenerife e La Gomera è uno dei migliori spot in Europa per osservare cetacei allo stato libero.
 
 ## Porti di Partenza
@@ -125,12 +131,14 @@ Cerca imbarcazioni con il marchio **"Barco Azul"** che garantisce distanze minim
 Cappello, crema solare, giacca leggera e macchina fotografica.`,
   },
   {
-    title: "Masca e il Massiccio del Teno: Strade Vertiginose e Gole Spettacolari",
+    title:
+      "Masca e il Massiccio del Teno: Strade Vertiginose e Gole Spettacolari",
     slug: "masca-massiccio-teno",
     category: "natura",
     image_url: "/images/blog/masca-valley.jpg",
     image_slug: "masca-valley",
-    excerpt: "Masca è uno dei paesaggi più scenografici di Tenerife: un villaggio incastonato tra rocce basaltiche con strade vertiginose e gole spettacolari.",
+    excerpt:
+      "Masca è uno dei paesaggi più scenografici di Tenerife: un villaggio incastonato tra rocce basaltiche con strade vertiginose e gole spettacolari.",
     content: `Masca, nel massiccio del Teno, è uno dei paesaggi più scenografici di Tenerife. Il villaggio sembra incastonato in un anfiteatro naturale di rocce basaltiche.
 
 ## Il Villaggio di Masca
@@ -146,12 +154,14 @@ Uno dei trekking più famosi dell'isola. L'accesso è ora regolamentato: prenota
 Strade panoramiche verso Buena Vista del Norte e il Faro del Teno. Mirador con viste sulle scogliere e piccoli paesi rurali tradizionali.`,
   },
   {
-    title: "Costa Adeje, Las Américas e Los Cristianos: Resort, Spiagge e Nightlife",
+    title:
+      "Costa Adeje, Las Américas e Los Cristianos: Resort, Spiagge e Nightlife",
     slug: "costa-adeje-las-americas",
     category: "spiagge",
     image_url: "/images/blog/adeje-3.jpg",
     image_slug: "adeje-3",
-    excerpt: "La fascia costiera sud di Tenerife è il principale polo turistico dell'isola: hotel di ogni categoria, spiagge bellissime, ristoranti e vita notturna.",
+    excerpt:
+      "La fascia costiera sud di Tenerife è il principale polo turistico dell'isola: hotel di ogni categoria, spiagge bellissime, ristoranti e vita notturna.",
     content: `La fascia costiera tra Costa Adeje, Playa de las Américas e Los Cristianos è il principale polo turistico del sud di Tenerife.
 
 ## Spiagge Principali
@@ -170,7 +180,8 @@ Sport acquatici, escursioni in barca, whale watching, gite a La Gomera. Shopping
     category: "cultura",
     image_url: "/images/blog/puerto-1.webp",
     image_slug: "puerto-1",
-    excerpt: "Puerto de la Cruz unisce il fascino di un antico porto canario con modernità: il Lago Martiánez di Manrique, la spiaggia nera e il centro storico.",
+    excerpt:
+      "Puerto de la Cruz unisce il fascino di un antico porto canario con modernità: il Lago Martiánez di Manrique, la spiaggia nera e il centro storico.",
     content: `Puerto de la Cruz, nella costa nord, unisce il fascino di un antico porto canario con un'anima moderna e turistica.
 
 ## Cosa Vedere
@@ -187,7 +198,8 @@ Puerto de la Cruz è anche il punto di partenza per visitare il Loro Parque e la
     category: "divertimento",
     image_url: "/images/blog/loro-parque-1.webp",
     image_slug: "loro-parque-1",
-    excerpt: "Loro Parque è uno dei parchi faunistici più noti al mondo: pinguini, squali, pappagalli e programmi di conservazione di eccellenza.",
+    excerpt:
+      "Loro Parque è uno dei parchi faunistici più noti al mondo: pinguini, squali, pappagalli e programmi di conservazione di eccellenza.",
     content: `Loro Parque, a Puerto de la Cruz, è uno dei parchi faunistici più noti al mondo, riconosciuto per i suoi standard di benessere animale.
 
 ## Aree Tematiche
@@ -204,7 +216,8 @@ Dedica almeno una giornata intera: il parco è grande e ricco di spettacoli e ar
     category: "cultura",
     image_url: "/images/blog/garachico-1.jpg",
     image_slug: "garachico-1",
-    excerpt: "Garachico è un gioiello storico della costa nord: piscine naturali di lava, centro storico restaurato e una storia di rinascita dopo l'eruzione del 1706.",
+    excerpt:
+      "Garachico è un gioiello storico della costa nord: piscine naturali di lava, centro storico restaurato e una storia di rinascita dopo l'eruzione del 1706.",
     content: `Garachico è un gioiello storico della costa nord. Un'eruzione nel 1706 distrusse il porto e parte della città, ma oggi il paese è magnificamente restaurato.
 
 ## Cosa Fare
@@ -221,7 +234,8 @@ Garachico è facilmente raggiungibile da Puerto de la Cruz e si abbina bene a un
     category: "cultura",
     image_url: "/images/blog/la-laguna-1.jpg",
     image_slug: "la-laguna-1",
-    excerpt: "San Cristóbal de La Laguna è una città coloniale UNESCO, con un tracciato a griglia che fu modello per molte città latinoamericane.",
+    excerpt:
+      "San Cristóbal de La Laguna è una città coloniale UNESCO, con un tracciato a griglia che fu modello per molte città latinoamericane.",
     content: `San Cristóbal de La Laguna, vicino a Santa Cruz, è una città coloniale dal tracciato a griglia, modello per molte città dell'America Latina.
 
 ## Punti di Interesse
@@ -238,7 +252,8 @@ La Laguna si raggiunge facilmente dal porto di Santa Cruz con il tram. La città
     category: "gastronomia",
     image_url: "/images/blog/eat-1.webp",
     image_slug: "eat-1",
-    excerpt: "La cucina di Tenerife: papas arrugadas, gofio, mojo, queso asado e i guachinche, locali tradizionali dove vivere un'esperienza gastronomica autentica.",
+    excerpt:
+      "La cucina di Tenerife: papas arrugadas, gofio, mojo, queso asado e i guachinche, locali tradizionali dove vivere un'esperienza gastronomica autentica.",
     content: `La cucina di Tenerife è basata su ingredienti semplici ma genuini, con forti influenze spagnole e latinoamericane.
 
 ## Piatti Iconici
@@ -258,7 +273,8 @@ I guachinche sono locali tradizionali del nord dove famiglie produttrici di vino
     category: "gastronomia",
     image_url: "/images/blog/vitigni-1.jpg",
     image_slug: "vitigni-1",
-    excerpt: "Il terreno vulcanico di Tenerife crea vini dalla forte personalità: i vitigni Listán Negro e Listán Blanco danno vini minerali e freschi.",
+    excerpt:
+      "Il terreno vulcanico di Tenerife crea vini dalla forte personalità: i vitigni Listán Negro e Listán Blanco danno vini minerali e freschi.",
     content: `Il terreno vulcanico, le differenze di altitudine e il clima mite creano condizioni perfette per vini dalla forte personalità.
 
 ## Zone Vitivinicole
@@ -279,7 +295,8 @@ Molte cantine offrono tour, degustazioni e vendita diretta. Abbina la visita a u
     category: "spiagge",
     image_url: "/images/blog/playa-1.jpg",
     image_slug: "playa-1",
-    excerpt: "Tenerife offre spiagge incredibili: sabbia dorata del Sahara a Las Teresitas, sabbia nera vulcanica a Playa Jardín, e calette selvagge ad Anaga.",
+    excerpt:
+      "Tenerife offre spiagge incredibili: sabbia dorata del Sahara a Las Teresitas, sabbia nera vulcanica a Playa Jardín, e calette selvagge ad Anaga.",
     content: `Tenerife offre una varietà incredibile di spiagge:
 
 ## Le Spiagge Principali
@@ -299,7 +316,8 @@ Calette e spiagge selvagge punteggiano tutta la costa, soprattutto nella zona di
     category: "cultura",
     image_url: "/images/blog/santacruz-1.jpg",
     image_slug: "santacruz-1",
-    excerpt: "Santa Cruz è la capitale di Tenerife: shopping, l'Auditorium di Calatrava, il Parque García Sanabria e una scena culturale vivace.",
+    excerpt:
+      "Santa Cruz è la capitale di Tenerife: shopping, l'Auditorium di Calatrava, il Parque García Sanabria e una scena culturale vivace.",
     content: `Santa Cruz è la capitale amministrativa dell'isola, una città moderna con grandi viali, parchi e una scena culturale vivace.
 
 ## Cosa Fare
@@ -319,7 +337,8 @@ Il Museo della Natura e dell'Uomo ospita le più importanti collezioni delle Iso
     category: "cultura",
     image_url: "/images/blog/carneval-1.jpg",
     image_slug: "carneval-1",
-    excerpt: "Il Carnevale di Santa Cruz è uno dei più grandi al mondo, paragonato a quello di Rio: costumi spettacolari, musica e festa continua per settimane.",
+    excerpt:
+      "Il Carnevale di Santa Cruz è uno dei più grandi al mondo, paragonato a quello di Rio: costumi spettacolari, musica e festa continua per settimane.",
     content: `Il Carnevale di Santa Cruz è uno dei più grandi e famosi al mondo, spesso paragonato a quello di Rio de Janeiro.
 
 ## Eventi Principali
@@ -331,12 +350,14 @@ Il Museo della Natura e dell'Uomo ospita le più importanti collezioni delle Iso
 Durante il carnevale la città si trasforma in una festa continua con musica, balli e gente mascherata per le strade fino all'alba. L'evento dura diverse settimane di solito a febbraio.`,
   },
   {
-    title: "Clima e Microclimi di Tenerife: Dove Alloggiare in Base alle Tue Esigenze",
+    title:
+      "Clima e Microclimi di Tenerife: Dove Alloggiare in Base alle Tue Esigenze",
     slug: "clima-microclimi-tenerife",
     category: "pratiche",
     image_url: "/images/blog/villa-1.webp",
     image_slug: "villa-1",
-    excerpt: "Tenerife ha microclimi molto diversi: dalla siccità soleggiata del sud alla verde umidità del nord. Scopri dove alloggiare in base alle tue preferenze.",
+    excerpt:
+      "Tenerife ha microclimi molto diversi: dalla siccità soleggiata del sud alla verde umidità del nord. Scopri dove alloggiare in base alle tue preferenze.",
     content: `Tenerife è famosa come "l'isola dell'eterna primavera", ma presenta microclimi molto diversi tra nord, sud, costa e interno.
 
 ## Nord vs Sud
@@ -358,7 +379,8 @@ Scegli il nord se ami paesaggi verdi; scegli il sud se priorità assoluta è il 
     category: "sport",
     image_url: "/images/blog/parapendio-1.jpg",
     image_slug: "parapendio-1",
-    excerpt: "Tenerife è un parco giochi per gli sportivi: trekking al Teide e ad Anaga, MTB su sterrati, parapendio con decolli famosi e atterraggi sulla costa.",
+    excerpt:
+      "Tenerife è un parco giochi per gli sportivi: trekking al Teide e ad Anaga, MTB su sterrati, parapendio con decolli famosi e atterraggi sulla costa.",
     content: `Tenerife è un parco giochi all'aria aperta per appassionati di sport.
 
 ## Trekking
@@ -385,7 +407,8 @@ Decolli famosi nei pressi di Adeje, Güímar e Izaña, con atterraggi sulla cost
     category: "natura",
     image_url: "/images/blog/gomera-1.avif",
     image_slug: "gomera-1",
-    excerpt: "Da Tenerife puoi raggiungere facilmente le isole sorelle: La Gomera verde, La Palma stellare e vulcanica, El Hierro paradiso delle immersioni.",
+    excerpt:
+      "Da Tenerife puoi raggiungere facilmente le isole sorelle: La Gomera verde, La Palma stellare e vulcanica, El Hierro paradiso delle immersioni.",
     content: `Da Tenerife puoi raggiungere facilmente altre isole delle Canarie in traghetto o volo interno.
 
 ## La Gomera
@@ -406,7 +429,8 @@ La più piccola e meno turistica delle Canarie. Paradiso per immersioni nella Ri
     category: "famiglia",
     image_url: "/images/blog/kidsactivity-1.jpg",
     image_slug: "kidsactivity-1",
-    excerpt: "Tenerife è ideale per famiglie con bambini: Siam Park e Loro Parque, spiagge con acque calme, trekking facili e hotel con miniclub e piscine dedicate.",
+    excerpt:
+      "Tenerife è ideale per famiglie con bambini: Siam Park e Loro Parque, spiagge con acque calme, trekking facili e hotel con miniclub e piscine dedicate.",
     content: `Tenerife è una meta ideale per famiglie grazie a una combinazione perfetta di attrazioni, spiagge e servizi.
 
 ## Parchi Tematici
@@ -428,12 +452,14 @@ La più piccola e meno turistica delle Canarie. Paradiso per immersioni nella Ri
 - Visita al Parco Nazionale del Teide con la funivia`,
   },
   {
-    title: "Vivere a Tenerife: Nomade Digitale, Pensionato e Itinerari 3/5/7 Giorni",
+    title:
+      "Vivere a Tenerife: Nomade Digitale, Pensionato e Itinerari 3/5/7 Giorni",
     slug: "vivere-tenerife-itinerari",
     category: "pratiche",
     image_url: "/images/blog/villa-5.avif",
     image_slug: "villa-5",
-    excerpt: "Sempre più persone scelgono Tenerife per viverci: costo della vita accessibile, clima mite, internet veloce. Più gli itinerari ideali da 3, 5 e 7 giorni.",
+    excerpt:
+      "Sempre più persone scelgono Tenerife per viverci: costo della vita accessibile, clima mite, internet veloce. Più gli itinerari ideali da 3, 5 e 7 giorni.",
     content: `Sempre più persone scelgono Tenerife per trasferirsi o trascorrere lunghi periodi come nomadi digitali o pensionati.
 
 ## Vivere a Tenerife
@@ -510,5 +536,7 @@ export async function seedIfEmpty(): Promise<void> {
     } as any);
   }
 
-  console.log(`✅ Seed complete: 2 users + ${articles.length} articles inserted`);
+  console.log(
+    `✅ Seed complete: 2 users + ${articles.length} articles inserted`,
+  );
 }
