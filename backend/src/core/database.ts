@@ -12,14 +12,29 @@
 
 import { Sequelize } from "sequelize";
 import { settings } from "./config";
+import fs from "fs";
+import path from "path";
 
 /**
  * Initialize Sequelize instance with SQLite
  * Compatible with Python backend's SQLAlchemy database
  */
+// Ensure the data directory exists before Sequelize tries to open the SQLite file
+const storagePath = settings.SQLALCHEMY_DATABASE_URI.replace(
+  /^sqlite:\/\/\//,
+  "",
+);
+const resolvedStorage = path.isAbsolute(storagePath)
+  ? storagePath
+  : path.resolve(process.cwd(), storagePath);
+const dataDir = path.dirname(resolvedStorage);
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
 export const sequelize = new Sequelize({
   dialect: "sqlite",
-  storage: settings.SQLALCHEMY_DATABASE_URI.replace("sqlite:///", ""),
+  storage: resolvedStorage,
   logging: false, // Set to console.log for debugging
   define: {
     timestamps: false, // Python models don't use default timestamps

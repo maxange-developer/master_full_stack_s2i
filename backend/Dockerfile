@@ -1,6 +1,9 @@
 # ---- Stage 1: Build ----
 FROM node:18-alpine AS builder
 
+# Build tools needed for sqlite3 native compilation on Alpine
+RUN apk add --no-cache python3 make g++
+
 WORKDIR /app
 
 COPY package*.json ./
@@ -8,7 +11,6 @@ RUN npm ci
 
 COPY tsconfig.json ./
 COPY src/ ./src/
-COPY scripts/ ./scripts/
 
 RUN npm run build
 
@@ -17,15 +19,15 @@ FROM node:18-alpine AS production
 
 WORKDIR /app
 
-# Install only production deps
+# Copy pre-compiled node_modules from builder (includes sqlite3 native binaries)
+# Avoids re-compiling sqlite3 in production stage (no build tools needed)
+COPY --from=builder /app/node_modules ./node_modules
 COPY package*.json ./
-RUN npm ci --omit=dev
 
-# Copy compiled output and scripts
+# Copy compiled TypeScript output
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/scripts ./scripts
 
-# Create persistent data and image directories
+# Create data directory for SQLite (ephemeral on Render free tier)
 RUN mkdir -p /app/data /app/public/images/blog
 
 EXPOSE 8000
