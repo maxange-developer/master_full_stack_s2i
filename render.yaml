@@ -55,9 +55,4 @@ services:
 
     envVars:
       - key: VITE_API_URL
-        fromService:
-          name: tenerife-backend
-          type: web
-          property: host
-          envVarKey: VITE_API_URL
         value: https://tenerife-backend.onrender.com/api/v1
