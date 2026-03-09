@@ -12,9 +12,10 @@
 services:
   - type: web
     name: tenerife-backend
-    runtime: docker
-    dockerfilePath: ./backend/Dockerfile
-    dockerContext: ./backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install --include=dev && npm run build
+    startCommand: node dist/index.js
     healthCheckPath: /health
 
     envVars:
