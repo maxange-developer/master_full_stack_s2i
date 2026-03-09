@@ -6,8 +6,8 @@
 # 2. On Render dashboard: New > Blueprint > connect this repo
 # 3. Set the secret env vars marked with `sync: false` in the dashboard
 #
-# The disk ensures SQLite data persists across deploys/restarts.
-# Without a disk the auto-seed in index.ts will re-populate data after each restart.
+# NOTE: Free tier has no persistent disk — the auto-seed in src/utils/seedIfEmpty.ts
+# re-populates the 20 articles and 2 users automatically on every restart.
 
 services:
   - type: web
@@ -23,9 +23,9 @@ services:
         value: production
       - key: PORT
         value: 8000
-      # SQLite stored on the persistent disk below
+      # SQLite path inside the container (ephemeral on free tier — auto-seed handles it)
       - key: SQLALCHEMY_DATABASE_URI
-        value: sqlite:////var/data/sql_app.db
+        value: sqlite:///./data/sql_app.db
       # Set these manually in the Render dashboard:
       - key: SECRET_KEY
         sync: false # REQUIRED — set in dashboard
@@ -35,10 +35,3 @@ services:
         sync: false # optional — enables web search
       - key: CORS_ORIGINS
         sync: false # e.g. https://your-frontend.onrender.com
-
-    # Persistent disk — $0.25/GB/month (1 GB minimum)
-    # Remove this block if you prefer the free tier with auto-seed on each restart
-    disk:
-      name: tenerife-data
-      mountPath: /var/data
-      sizeGB: 1
