@@ -1,8 +1,10 @@
 # ---- Stage 1: Build ----
-FROM node:18-alpine AS builder
+# node:18 (Debian/bookworm) includes build-essential (make, gcc, g++) via buildpack-deps
+# Only python3 needs to be added — required by node-gyp to compile sqlite3
+FROM node:18 AS builder
 
-# Build tools needed for sqlite3 native compilation on Alpine
-RUN apk add --no-cache python3 make g++
+RUN apt-get update && apt-get install -y --no-install-recommends python3 \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -15,19 +17,20 @@ COPY src/ ./src/
 RUN npm run build
 
 # ---- Stage 2: Production ----
-FROM node:18-alpine AS production
+# node:18-slim is smaller; node_modules are copied pre-compiled from builder
+# so no build tools are needed here
+FROM node:18-slim AS production
 
 WORKDIR /app
 
-# Copy pre-compiled node_modules from builder (includes sqlite3 native binaries)
-# Avoids re-compiling sqlite3 in production stage (no build tools needed)
+# Copy pre-compiled node_modules (includes sqlite3 native binaries)
 COPY --from=builder /app/node_modules ./node_modules
 COPY package*.json ./
 
 # Copy compiled TypeScript output
 COPY --from=builder /app/dist ./dist
 
-# Create data directory for SQLite (ephemeral on Render free tier)
+# Create SQLite data directory (ephemeral on Render free tier — auto-seed handles repopulation)
 RUN mkdir -p /app/data /app/public/images/blog
 
 EXPOSE 8000
