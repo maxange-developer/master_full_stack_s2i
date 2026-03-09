@@ -82,11 +82,11 @@ async function startServer() {
 
     // Start listening
     app.listen(settings.PORT, () => {
+      const host =
+        process.env.RENDER_EXTERNAL_URL || `http://localhost:${settings.PORT}`;
       console.log("🚀 ========================================");
-      console.log(`✅ Server running on http://localhost:${settings.PORT}`);
-      console.log(
-        `✅ API endpoint: http://localhost:${settings.PORT}${settings.API_V1_STR}`,
-      );
+      console.log(`✅ Server running on ${host}`);
+      console.log(`✅ API endpoint: ${host}${settings.API_V1_STR}`);
       console.log(`✅ Environment: ${process.env.NODE_ENV || "development"}`);
       console.log("🚀 ========================================");
     });
