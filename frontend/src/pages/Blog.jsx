@@ -110,7 +110,7 @@ export default function Blog() {
     try {
       const response = await api.get("/blog/saved");
       const ids = new Set(
-        response.data.map((item) => item.article_id || item.id)
+        response.data.map((item) => item.article_id || item.id),
       );
       setSavedIds(ids);
     } catch (error) {
@@ -157,7 +157,7 @@ export default function Blog() {
       }
       // Dispatch event to update counter in Navbar and Home (but not this page)
       window.dispatchEvent(
-        new CustomEvent("articleSaved", { detail: { source: "blog" } })
+        new CustomEvent("articleSaved", { detail: { source: "blog" } }),
       );
     } catch (error) {
       console.error("Failed to toggle save article", error);
@@ -194,7 +194,7 @@ export default function Blog() {
   const totalPages = Math.ceil(filteredArticles.length / ITEMS_PER_PAGE);
   const paginatedArticles = filteredArticles.slice(
     currentPage * ITEMS_PER_PAGE,
-    (currentPage + 1) * ITEMS_PER_PAGE
+    (currentPage + 1) * ITEMS_PER_PAGE,
   );
 
   const goToPrevPage = () => {

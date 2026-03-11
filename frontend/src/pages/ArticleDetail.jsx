@@ -145,13 +145,13 @@ export default function ArticleDetail() {
 
   const goToPrevImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === 0 ? getImagesCount() - 1 : prev - 1
+      prev === 0 ? getImagesCount() - 1 : prev - 1,
     );
   };
 
   const goToNextImage = () => {
     setCurrentImageIndex((prev) =>
-      prev === getImagesCount() - 1 ? 0 : prev + 1
+      prev === getImagesCount() - 1 ? 0 : prev + 1,
     );
   };
 
@@ -203,8 +203,8 @@ export default function ArticleDetail() {
             article.title.length > 60
               ? "text-lg sm:text-xl"
               : article.title.length > 40
-              ? "text-xl sm:text-2xl"
-              : "text-2xl sm:text-3xl"
+                ? "text-xl sm:text-2xl"
+                : "text-2xl sm:text-3xl"
           }`}
         >
           {article.title}
@@ -317,7 +317,7 @@ export default function ArticleDetail() {
                   src={getImageUrl()}
                   alt={article.title}
                   decoding="async"
-                  style={{ animation: 'fadeIn 0.2s ease' }}
+                  style={{ animation: "fadeIn 0.2s ease" }}
                   className="max-w-full max-h-full object-contain"
                   onClick={(e) => e.stopPropagation()}
                 />

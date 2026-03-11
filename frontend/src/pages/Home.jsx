@@ -149,7 +149,8 @@ export default function Home() {
       }
     };
     document.addEventListener("visibilitychange", handleVisibility);
-    return () => document.removeEventListener("visibilitychange", handleVisibility);
+    return () =>
+      document.removeEventListener("visibilitychange", handleVisibility);
   }, [user]);
 
   // Event listener to update counter when article is saved
