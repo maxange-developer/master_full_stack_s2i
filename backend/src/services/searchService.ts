@@ -67,7 +67,7 @@ class SearchService {
           include_images: true,
           max_results: 3,
         },
-        { timeout: 10000 }
+        { timeout: 5000 } // Reduced timeout to 5s to prevent long waits
       );
 
       const images: string[] = response.data.images || [];
