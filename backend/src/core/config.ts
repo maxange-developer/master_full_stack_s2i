@@ -46,8 +46,18 @@ export const settings: Settings = {
     process.env.SQLALCHEMY_DATABASE_URI || "sqlite:///./sql_app.db",
   OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
   TAVILY_API_KEY: process.env.TAVILY_API_KEY || "",
-  CORS_ORIGINS: process.env.CORS_ORIGINS?.split(",").filter((o) =>
-    o.trim(),
-  ) || ["http://localhost:5173", "http://localhost:3000"],
+  CORS_ORIGINS: (() => {
+    const corsEnv = process.env.CORS_ORIGINS?.trim();
+    if (corsEnv) {
+      const parsed = corsEnv.split(",").map((o) => o.trim()).filter(Boolean);
+      if (parsed.length > 0) return parsed;
+    }
+    // Fallback includes production URL
+    return [
+      "https://master-start2impact.onrender.com",
+      "http://localhost:5173",
+      "http://localhost:3000",
+    ];
+  })(),
   PORT: parseInt(process.env.PORT || "8000"),
 };
