@@ -1,26 +1,5 @@
-/**
- * Root Application Component
- *
- * Defines application routing structure with protected and public routes.
- * Integrates authentication, layout, and internationalization.
- *
- * Route Structure:
- * - Public: / (Landing), /login, /register
- * - Protected (requires auth): /home, /search, /blog, /saved, /create-article
- *
- * Key Features:
- * - JWT-based route protection via ProtectedRoute
- * - Nested routes with shared Layout component
- * - Multi-language support via LanguageProvider
- * - Automatic redirect to login for unauthenticated users
- * - Prefetching of images and pages for improved performance
- *
- * Technical Notes:
- * - Uses React Router v6 nested routes
- * - ProtectedRoute checks Zustand authStore for token
- * - Layout component provides Navbar and consistent structure
- * - Prefetch utility loads images and pages in background via requestIdleCallback
- */
+// Root Application Component
+// Routing structure with protected routes and authentication
 
 import { useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";

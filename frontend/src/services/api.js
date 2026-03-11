@@ -1,47 +1,5 @@
-/**
- * Axios API Client Configuration
- *
- * Pre-configured axios instance for all backend API calls with
- * automatic JWT authentication and token expiration handling.
- *
- * Base Configuration:
- * - baseURL: http://localhost:8000/api/v1
- * - Automatic Authorization header injection
- * - 401/403 error handling with auto-logout
- *
- * Request Interceptor:
- * - Retrieves JWT token from Zustand authStore
- * - Adds Authorization: Bearer <token> to all requests
- * - Runs before every API call
- *
- * Response Interceptor:
- * - Catches 401 (Unauthorized) and 403 (Forbidden) errors
- * - Triggers automatic logout on token expiration
- * - Redirects to /login page
- * - Clears auth state via authStore.logout()
- *
- * Usage:
- * ```javascript
- * import api from '../services/api';
- *
- * // GET request
- * const response = await api.get('/blog/articles');
- *
- * // POST request
- * await api.post('/auth/login', formData);
- *
- * // With custom headers
- * await api.get('/auth/me', {
- *   headers: { 'Custom-Header': 'value' }
- * });
- * ```
- *
- * Technical Notes:
- * - Token automatically included in all requests
- * - No manual Authorization header management needed
- * - Handles token expiration gracefully
- * - useAuthStore.getState() for non-React context access
- */
+// Axios API client with JWT authentication
+// Automatically adds Bearer token and handles 401/403 errors
 
 import axios from "axios";
 import { useAuthStore } from "../store/authStore";

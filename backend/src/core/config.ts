@@ -1,20 +1,12 @@
-/**
- * Application Configuration Module
- *
- * Centralized settings management loaded from environment variables.
- * Ensures compatibility with existing Python backend configuration.
- *
- * Critical: All values must match Python backend for seamless migration
- */
+// Application Configuration
+// Centralized settings from environment variables
 
 import dotenv from "dotenv";
 import path from "path";
 
 dotenv.config();
 
-/**
- * Settings interface defining all application configuration
- */
+// Settings interface
 interface Settings {
   PROJECT_NAME: string;
   API_V1_STR: string;
@@ -28,10 +20,7 @@ interface Settings {
   PORT: number;
 }
 
-/**
- * Singleton settings object
- * Loaded once at application startup
- */
+// Application settings - loaded at startup
 export const settings: Settings = {
   PROJECT_NAME: process.env.PROJECT_NAME || "Tenerife AI Activity Finder",
   API_V1_STR: "/api/v1",

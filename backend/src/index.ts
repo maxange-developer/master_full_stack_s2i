@@ -1,15 +1,4 @@
-/**
- * Express Application Entry Point
- *
- * Initializes Express app with:
- * - CORS middleware
- * - Body parsers
- * - API routes
- * - Error handling
- * - Database connection
- *
- * CRITICAL: Must listen on port 8000 to match frontend API calls
- */
+// Express Application Entry Point
 
 import express from "express";
 import cors from "cors";
@@ -21,11 +10,7 @@ import { seedIfEmpty } from "./utils/seedIfEmpty";
 
 const app = express();
 
-/**
- * CORS Configuration
- * Must allow frontend origin (http://localhost:5173 for dev, Render URL for prod)
- * Dynamic origin handler ensures compatibility even if CORS_ORIGINS env var fails
- */
+// CORS Configuration - supports multiple origins with fallbacks
 app.use(
   cors({
     origin: (origin, callback) => {
@@ -62,21 +47,14 @@ app.use(
   }),
 );
 
-/**
- * Explicit preflight handling for all routes
- * Ensures OPTIONS requests are handled even if CORS middleware misses them
- */
+// Explicit preflight handling
 app.options("*", cors());
 
-/**
- * Body parsers
- */
+// Body parsers
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/**
- * Root endpoint
- */
+// Root endpoint
 app.get("/", (req, res) => {
   res.json({
     message: "Tenerife AI Activity Finder API",
@@ -86,16 +64,12 @@ app.get("/", (req, res) => {
   });
 });
 
-/**
- * Health check endpoint
- */
+// Health check
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
-/**
- * CORS debug endpoint - helps diagnose CORS issues
- */
+// CORS diagnostic endpoint
 app.get("/cors-test", (req, res) => {
   res.json({
     message: "CORS is working!",
@@ -105,19 +79,13 @@ app.get("/cors-test", (req, res) => {
   });
 });
 
-/**
- * API Routes (CRITICAL: Must use /api/v1 prefix)
- */
+// API Routes
 app.use(`${settings.API_V1_STR}`, apiRouter);
 
-/**
- * Error handling middleware (must be last)
- */
+// Error handling middleware
 app.use(errorHandler);
 
-/**
- * Start server
- */
+// Server initialization
 async function startServer() {
   try {
     // Initialize database (creates tables if they don't exist)
