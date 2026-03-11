@@ -526,12 +526,16 @@ export async function seedIfEmpty(): Promise<void> {
     const art = articles[i];
     const d = new Date(now);
     d.setDate(d.getDate() - (articles.length - i) * 3);
+    
+    // Extract just the filename from image_url (remove /images/blog/ prefix)
+    const imageFilename = art.image_url.replace(/^\/images\/blog\//, '');
+    
     await Article.create({
       ...art,
       language: "it",
       is_published: true,
       author_id: (admin as any).id,
-      images: [art.image_url], // Sequelize handles JSON serialization automatically
+      images: [imageFilename], // Store only filename, frontend adds /images/blog/ prefix
       created_at: d,
     } as any);
   }
