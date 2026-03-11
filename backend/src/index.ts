@@ -23,16 +23,25 @@ const app = express();
 
 /**
  * CORS Configuration
- * Must allow frontend origin (http://localhost:5173)
+ * Must allow frontend origin (http://localhost:5173 for dev, Render URL for prod)
  */
 app.use(
   cors({
     origin: settings.CORS_ORIGINS,
-    credentials: false,
+    credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+    exposedHeaders: ["Content-Range", "X-Content-Range"],
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
   }),
 );
+
+/**
+ * Explicit preflight handling for all routes
+ * Ensures OPTIONS requests are handled even if CORS middleware misses them
+ */
+app.options("*", cors());
 
 /**
  * Body parsers
