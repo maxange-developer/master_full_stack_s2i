@@ -24,8 +24,8 @@ class SearchService {
         {
           query,
           api_key: settings.TAVILY_API_KEY,
-          search_depth: "advanced",
-          max_results: 5,
+          search_depth: "basic",
+          max_results: 3,
         },
         {
           headers: { "Content-Type": "application/json" },
@@ -71,9 +71,9 @@ class SearchService {
           query: searchQuery,
           search_depth: "basic",
           include_images: true,
-          max_results: 3,
+          max_results: 1,
         },
-        { timeout: 5000 }, // Reduced timeout to 5s to prevent long waits
+        { timeout: 5000 }
       );
 
       const images: string[] = response.data.images || [];

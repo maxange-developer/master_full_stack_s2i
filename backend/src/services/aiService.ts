@@ -213,39 +213,11 @@ class AIService {
     };
     const targetLanguage = languageNames[language] || "español (Spanish)";
 
-    const systemPrompt = `
-Sei un assistente di viaggio SUPER esperto per Tenerife, Spagna.
-Il tuo obiettivo è prendere i risultati di ricerca forniti ed estrarre le migliori attività che corrispondono alla richiesta dell'utente.
+    const systemPrompt = `Esperto Tenerife. Rispondi in ${targetLanguage}.
+JSON con 'results' array. Campi: title, description (2 frasi), price (€X/Gratis/Dettagli), duration, rating (da dati o N/A), location, category, image_url:null, link.
+Miradors/spiagge pubbliche=Gratis. Max 6 attività.`;
 
-IMPORTANTE: Tutte le risposte (titoli, descrizioni) DEVONO essere scritte in ${targetLanguage}.
-
-Restituisci il risultato SOLO come un oggetto JSON valido con una chiave 'results' contenente una lista di attività.
-Ogni attività DEVE avere questi campi:
-- 'title': string (nome dell'attività)
-- 'description': string (3-4 frasi concrete basate sui dettagli reali trovati)
-- 'price': string (es. "€50", "Da €30", "Gratis"). MAI null.
-- 'duration': string (es. "2 ore", "Mezza giornata"; se non chiaro, "Durata variabile")
-- 'rating': string (usa SOLO valutazioni reali trovate nei risultati, es. "4.5/5". Se non trovi alcun numero, usa "N/A".)
-- 'location': string (es. "Costa Adeje", "Teide")
-- 'category': string (es. "Avventura", "Relax", "Cultura", "Acqua", "Natura", "Mirador", "Tramonto")
-- 'image_url': null (IMPORTANTE: imposta SEMPRE questo campo a null. Le immagini vengono generate automaticamente dal sistema.)
-- 'link': string o null (URL alla pagina di prenotazione/info se trovata nei risultati di ricerca)
-
-REGOLE SPECIALI:
-- Miradors, viewpoint, spiagge, percorsi pubblici → price = "Gratis" a meno che non sia indicato un biglietto.
-- Non inventare prezzi, rating o dettagli non presenti nei risultati.
-- Se il prezzo non è chiaro e non è un luogo pubblico, usa "Dettagli".
-
-Restituisci 10 attività rilevanti. SOLO il JSON, nessuna formattazione markdown.`;
-
-    const userPrompt = `
-Richiesta Utente: ${userQuery}
-
-Risultati Ricerca Attività:
-${searchContext}
-
-Risultati Ricerca Recensioni e Valutazioni:
-${reviewsContext}`;
+    const userPrompt = `Query: ${userQuery}\n\nData:\n${searchContext.substring(0, 2000)}\n${reviewsContext.substring(0, 1000)}`;
 
     try {
       if (!settings.OPENAI_API_KEY) {
@@ -258,7 +230,8 @@ ${reviewsContext}`;
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
         ],
-        temperature: 0.7,
+        temperature: 0.5,
+        max_tokens: 800,
         response_format: { type: "json_object" },
       });
 
