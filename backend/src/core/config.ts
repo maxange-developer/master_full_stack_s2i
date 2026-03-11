@@ -40,12 +40,14 @@ export const settings: Settings = {
     "aejUOWY7qptc4x2l-Es%ZQo1@CLyfPJ#36F5M*SRTGKwN0BV9+zu8nimX!bk=D&$",
   ALGORITHM: process.env.ALGORITHM || "HS256",
   ACCESS_TOKEN_EXPIRE_MINUTES: parseInt(
-    process.env.ACCESS_TOKEN_EXPIRE_MINUTES || "30"
+    process.env.ACCESS_TOKEN_EXPIRE_MINUTES || "30",
   ),
   SQLALCHEMY_DATABASE_URI:
     process.env.SQLALCHEMY_DATABASE_URI || "sqlite:///./sql_app.db",
   OPENAI_API_KEY: process.env.OPENAI_API_KEY || "",
   TAVILY_API_KEY: process.env.TAVILY_API_KEY || "",
-  CORS_ORIGINS: process.env.CORS_ORIGINS?.split(",") || ["*"],
+  CORS_ORIGINS: process.env.CORS_ORIGINS?.split(",").filter((o) =>
+    o.trim(),
+  ) || ["http://localhost:5173", "http://localhost:3000"],
   PORT: parseInt(process.env.PORT || "8000"),
 };

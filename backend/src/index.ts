@@ -97,6 +97,7 @@ async function startServer() {
       console.log(`✅ Server running on ${host}`);
       console.log(`✅ API endpoint: ${host}${settings.API_V1_STR}`);
       console.log(`✅ Environment: ${process.env.NODE_ENV || "development"}`);
+      console.log(`✅ CORS Origins: ${settings.CORS_ORIGINS.join(", ")}`);
       console.log("🚀 ========================================");
     });
   } catch (error) {
