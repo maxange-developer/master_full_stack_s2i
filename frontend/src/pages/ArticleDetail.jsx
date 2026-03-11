@@ -115,10 +115,10 @@ export default function ArticleDetail() {
   const toggleSave = async () => {
     try {
       if (isSaved) {
-        await api.delete(`/blog/unsave/${id}`);
+        await api.delete(`/blog/articles/${id}/save`);
         setIsSaved(false);
       } else {
-        await api.post(`/blog/save/${id}`);
+        await api.post(`/blog/articles/${id}/save`);
         setIsSaved(true);
       }
       window.dispatchEvent(new Event("articleSaved"));

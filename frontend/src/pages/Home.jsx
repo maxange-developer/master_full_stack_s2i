@@ -141,6 +141,17 @@ export default function Home() {
     }
   }, [user]);
 
+  // Refresh count when page becomes visible
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (!document.hidden && user) {
+        fetchSavedCount();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, [user]);
+
   // Event listener to update counter when article is saved
   useEffect(() => {
     const handleSavedUpdate = () => {

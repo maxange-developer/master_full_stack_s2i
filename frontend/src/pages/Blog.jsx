@@ -151,9 +151,9 @@ export default function Blog() {
 
     try {
       if (wasSaved) {
-        await api.delete(`/blog/unsave/${articleId}`);
+        await api.delete(`/blog/articles/${articleId}/save`);
       } else {
-        await api.post(`/blog/save/${articleId}`);
+        await api.post(`/blog/articles/${articleId}/save`);
       }
       // Dispatch event to update counter in Navbar and Home (but not this page)
       window.dispatchEvent(

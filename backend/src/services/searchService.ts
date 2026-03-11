@@ -73,7 +73,7 @@ class SearchService {
           include_images: true,
           max_results: 1,
         },
-        { timeout: 5000 }
+        { timeout: 5000 },
       );
 
       const images: string[] = response.data.images || [];
