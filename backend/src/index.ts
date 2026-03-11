@@ -24,10 +24,35 @@ const app = express();
 /**
  * CORS Configuration
  * Must allow frontend origin (http://localhost:5173 for dev, Render URL for prod)
+ * Dynamic origin handler ensures compatibility even if CORS_ORIGINS env var fails
  */
 app.use(
   cors({
-    origin: settings.CORS_ORIGINS,
+    origin: (origin, callback) => {
+      // Log the incoming origin for debugging
+      console.log(`🔍 CORS Request from origin: ${origin || "no-origin"}`);
+
+      // Allow requests with no origin (like mobile apps, Postman, or server-to-server)
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      // Check if origin is in allowed list
+      const allowedOrigins = [
+        ...settings.CORS_ORIGINS,
+        "https://master-start2impact.onrender.com",
+        "http://localhost:5173",
+        "http://localhost:3000",
+      ];
+
+      if (allowedOrigins.includes(origin)) {
+        console.log(`✅ CORS: Allowing origin ${origin}`);
+        callback(null, true);
+      } else {
+        console.log(`❌ CORS: Rejecting origin ${origin}`);
+        callback(new Error(`Origin ${origin} not allowed by CORS`));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
@@ -66,6 +91,18 @@ app.get("/", (req, res) => {
  */
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
+});
+
+/**
+ * CORS debug endpoint - helps diagnose CORS issues
+ */
+app.get("/cors-test", (req, res) => {
+  res.json({
+    message: "CORS is working!",
+    corsOrigins: settings.CORS_ORIGINS,
+    requestOrigin: req.headers.origin || "no-origin",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 /**
