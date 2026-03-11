@@ -51,6 +51,16 @@ export default function SavedArticles() {
     fetchSavedArticles();
   }, []);
 
+  // Listen for article save/unsave events to refresh the list
+  useEffect(() => {
+    const handleArticleSaved = () => {
+      console.log("📚 Article saved event received, refreshing list");
+      fetchSavedArticles();
+    };
+    window.addEventListener("articleSaved", handleArticleSaved);
+    return () => window.removeEventListener("articleSaved", handleArticleSaved);
+  }, []);
+
   const fetchSavedArticles = async () => {
     try {
       const response = await api.get("/blog/saved");

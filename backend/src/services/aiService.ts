@@ -23,79 +23,86 @@ const openai = new OpenAI({ apiKey: settings.OPENAI_API_KEY });
 // ── Local image catalogue ────────────────────────────────────────────────────
 // Maps keyword → image prefix(es) exactly as in the Python backend
 const KEYWORD_MAPPINGS: Record<string, string[]> = {
-  teide:          ["teide"],
-  anaga:          ["anaga"],
-  masca:          ["masca-valley"],
-  adeje:          ["adeje"],
-  garachico:      ["garachico"],
-  "santa cruz":   ["santacruz"],
-  santacruz:      ["santacruz"],
-  puerto:         ["puerto"],
-  "la laguna":    ["la-laguna"],
-  "la palma":     ["lapalma"],
-  "la gomera":    ["gomera"],
-  "el hierro":    ["elhierro"],
-  whale:          ["dolphins"],
-  dolphin:        ["dolphins"],
-  delfin:         ["dolphins"],
-  balena:         ["dolphins"],
-  osservazione:   ["dolphins"],
-  avvistamento:   ["dolphins"],
-  cetacei:        ["dolphins"],
-  siam:           ["siam-park"],
+  teide: ["teide"],
+  anaga: ["anaga"],
+  masca: ["masca-valley"],
+  adeje: ["adeje"],
+  garachico: ["garachico"],
+  "santa cruz": ["santacruz"],
+  santacruz: ["santacruz"],
+  puerto: ["puerto"],
+  "la laguna": ["la-laguna"],
+  "la palma": ["lapalma"],
+  "la gomera": ["gomera"],
+  "el hierro": ["elhierro"],
+  whale: ["dolphins"],
+  dolphin: ["dolphins"],
+  delfin: ["dolphins"],
+  balena: ["dolphins"],
+  osservazione: ["dolphins"],
+  avvistamento: ["dolphins"],
+  cetacei: ["dolphins"],
+  siam: ["siam-park"],
   "parco acquatico": ["siam-park"],
-  "water park":   ["siam-park"],
-  "loro parque":  ["loro-parque"],
-  pappagallo:     ["loro-parque"],
-  zoo:            ["loro-parque"],
-  parapendio:     ["parapendio"],
-  paragliding:    ["parapendio"],
-  quad:           ["quad"],
-  mtb:            ["mtb"],
-  "mountain bike":["mtb"],
-  bici:           ["mtb"],
-  escursion:      ["hiking", "anaga", "teide"],
-  trekking:       ["hiking", "anaga"],
-  hiking:         ["hiking", "anaga"],
-  cammino:        ["hiking", "anaga"],
-  ristorante:     ["eat"],
-  cibo:           ["eat"],
-  cucina:         ["eat"],
-  food:           ["eat"],
-  gastronomia:    ["eat"],
-  vino:           ["vitigni"],
-  wine:           ["vitigni"],
-  vigna:          ["vitigni"],
-  carneval:       ["carneval"],
-  carnevale:      ["carneval"],
-  festa:          ["carneval"],
-  spiaggia:       ["playa"],
-  beach:          ["playa"],
-  playa:          ["playa"],
-  mare:           ["playa", "dolphins"],
-  ocean:          ["playa", "dolphins"],
-  bambini:        ["kidsactivity", "loro-parque", "siam-park"],
-  famiglia:       ["kidsactivity", "loro-parque", "siam-park"],
-  kids:           ["kidsactivity", "loro-parque", "siam-park"],
-  hotel:          ["villa"],
-  alloggio:       ["villa"],
-  villa:          ["villa"],
+  "water park": ["siam-park"],
+  "loro parque": ["loro-parque"],
+  pappagallo: ["loro-parque"],
+  zoo: ["loro-parque"],
+  parapendio: ["parapendio"],
+  paragliding: ["parapendio"],
+  quad: ["quad"],
+  mtb: ["mtb"],
+  "mountain bike": ["mtb"],
+  bici: ["mtb"],
+  escursion: ["hiking", "anaga", "teide"],
+  trekking: ["hiking", "anaga"],
+  hiking: ["hiking", "anaga"],
+  cammino: ["hiking", "anaga"],
+  ristorante: ["eat"],
+  cibo: ["eat"],
+  cucina: ["eat"],
+  food: ["eat"],
+  gastronomia: ["eat"],
+  vino: ["vitigni"],
+  wine: ["vitigni"],
+  vigna: ["vitigni"],
+  carneval: ["carneval"],
+  carnevale: ["carneval"],
+  festa: ["carneval"],
+  spiaggia: ["playa"],
+  beach: ["playa"],
+  playa: ["playa"],
+  mare: ["playa", "dolphins"],
+  ocean: ["playa", "dolphins"],
+  bambini: ["kidsactivity", "loro-parque", "siam-park"],
+  famiglia: ["kidsactivity", "loro-parque", "siam-park"],
+  kids: ["kidsactivity", "loro-parque", "siam-park"],
+  hotel: ["villa"],
+  alloggio: ["villa"],
+  villa: ["villa"],
 };
 
 const CATEGORY_FALLBACKS: Record<string, string[]> = {
-  avventura:    ["hiking", "parapendio", "quad"],
-  natura:       ["anaga", "teide", "hiking"],
-  acqua:        ["playa", "dolphins", "siam-park"],
-  mare:         ["playa", "dolphins"],
-  cultura:      ["santacruz", "la-laguna", "carneval"],
-  relax:        ["playa", "villa"],
+  avventura: ["hiking", "parapendio", "quad"],
+  natura: ["anaga", "teide", "hiking"],
+  acqua: ["playa", "dolphins", "siam-park"],
+  mare: ["playa", "dolphins"],
+  cultura: ["santacruz", "la-laguna", "carneval"],
+  relax: ["playa", "villa"],
   divertimento: ["siam-park", "loro-parque", "kidsactivity"],
-  mirador:      ["teide", "anaga"],
-  tramonto:     ["teide", "playa", "anaga"],
+  mirador: ["teide", "anaga"],
+  tramonto: ["teide", "playa", "anaga"],
 };
 
-function getLocalImage(title: string, category: string = "", location: string = ""): string {
-  const blogDir = path.join(__dirname, "../../../../frontend/public/images/blog");
+function getLocalImage(
+  title: string,
+  category: string = "",
+  location: string = "",
+): string {
+  const blogDir = path.join(
+    __dirname,
+    "../../../../frontend/public/images/blog",
+  );
 
   // Build catalogue: prefix → filename[]
   const catalogue: Record<string, string[]> = {};
@@ -103,17 +110,22 @@ function getLocalImage(title: string, category: string = "", location: string = 
     if (fs.existsSync(blogDir)) {
       for (const file of fs.readdirSync(blogDir)) {
         const ext = path.extname(file).toLowerCase();
-        if (![".webp", ".jpg", ".jpeg", ".avif", ".png"].includes(ext)) continue;
+        if (![".webp", ".jpg", ".jpeg", ".avif", ".png"].includes(ext))
+          continue;
         const stem = path.basename(file, ext);
         // "teide-1", "siam-park-3", "masca-valley" -> prefix
         const parts = stem.split("-");
         const lastPart = parts[parts.length - 1];
-        const prefix = /^\d+$/.test(lastPart) ? parts.slice(0, -1).join("-") : stem;
+        const prefix = /^\d+$/.test(lastPart)
+          ? parts.slice(0, -1).join("-")
+          : stem;
         if (!catalogue[prefix]) catalogue[prefix] = [];
         catalogue[prefix].push(file);
       }
     }
-  } catch (e) { /* ignore */ }
+  } catch (e) {
+    /* ignore */
+  }
 
   if (Object.keys(catalogue).length === 0) return "/images/blog/playa-1.jpg";
 
@@ -122,7 +134,7 @@ function getLocalImage(title: string, category: string = "", location: string = 
   let matched: string[] = [];
   for (const [kw, prefixes] of Object.entries(KEYWORD_MAPPINGS)) {
     if (searchText.includes(kw)) {
-      matched.push(...prefixes.filter(p => catalogue[p]));
+      matched.push(...prefixes.filter((p) => catalogue[p]));
     }
   }
 
@@ -132,14 +144,17 @@ function getLocalImage(title: string, category: string = "", location: string = 
       const prefixWords = new Set(prefix.replace(/-/g, " ").split(" "));
       const textWords = new Set(searchText.split(/\s+/));
       for (const w of prefixWords) {
-        if (textWords.has(w)) { matched.push(prefix); break; }
+        if (textWords.has(w)) {
+          matched.push(prefix);
+          break;
+        }
       }
     }
   }
 
   if (matched.length === 0) {
     const fallback = CATEGORY_FALLBACKS[category.toLowerCase()] || ["playa"];
-    matched = fallback.filter(p => catalogue[p]);
+    matched = fallback.filter((p) => catalogue[p]);
   }
 
   if (matched.length === 0) matched = Object.keys(catalogue);
@@ -160,9 +175,8 @@ class AIService {
   async processQuery(
     userQuery: string,
     isSuggestion: boolean = false,
-    language: string = "es"
+    language: string = "es",
   ): Promise<SearchResponse> {
-
     const offTopicMessages: Record<string, string> = {
       es: "Lo siento, pero solo puedo ayudarte con información sobre Tenerife. ¡Intenta buscar actividades, lugares o experiencias para vivir en Tenerife!",
       en: "Sorry, but I can only help you with information about Tenerife. Try searching for activities, places, or experiences to live in Tenerife!",
@@ -187,7 +201,9 @@ class AIService {
     // Two Tavily searches (activity data + reviews), just like Python
     const [searchContext, reviewsContext] = await Promise.all([
       searchService.searchWeb(`Tenerife activities: ${userQuery}`),
-      searchService.searchWeb(`Tenerife ${userQuery} recensioni Google valutazione stelle rating TripAdvisor`),
+      searchService.searchWeb(
+        `Tenerife ${userQuery} recensioni Google valutazione stelle rating TripAdvisor`,
+      ),
     ]);
 
     const languageNames: Record<string, string> = {
@@ -246,65 +262,69 @@ ${reviewsContext}`;
         response_format: { type: "json_object" },
       });
 
-      const data = JSON.parse(completion.choices[0].message.content || '{"results":[]}');
+      const data = JSON.parse(
+        completion.choices[0].message.content || '{"results":[]}',
+      );
       const activities: any[] = data.results || [];
-      console.log(`[AIService] Got ${activities.length} activities from OpenAI`);
+      console.log(
+        `[AIService] Got ${activities.length} activities from OpenAI`,
+      );
 
       // Fetch images for each activity (Tavily → local fallback), same as Python
       for (const activity of activities) {
         try {
           const tavalyImage = await searchService.searchImageForActivity(
             activity.title || "",
-            activity.location || ""
+            activity.location || "",
           );
-          activity.image_url = tavalyImage || getLocalImage(
-            activity.title || "",
-            activity.category || "",
-            activity.location || ""
-          );
+          activity.image_url =
+            tavalyImage ||
+            getLocalImage(
+              activity.title || "",
+              activity.category || "",
+              activity.location || "",
+            );
         } catch (imageError) {
           // If image search fails, use local fallback
-          console.warn(`⚠️ Image search failed for ${activity.title}, using fallback`);
+          console.warn(
+            `⚠️ Image search failed for ${activity.title}, using fallback`,
+          );
           activity.image_url = getLocalImage(
             activity.title || "",
             activity.category || "",
-            activity.location || ""
+            activity.location || "",
           );
         }
       }
 
       return {
         results: activities.map((a: any) => ({
-          title:       a.title       || "Unknown Activity",
+          title: a.title || "Unknown Activity",
           description: a.description || "",
-          price:       a.price       || "Varies",
-          image_url:   a.image_url   || null,
-          link:        a.link        || null,
-          rating:      a.rating      || "",
-          location:    a.location    || "",
-          duration:    a.duration    || "",
-          category:    a.category    || "",
+          price: a.price || "Varies",
+          image_url: a.image_url || null,
+          link: a.link || null,
+          rating: a.rating || "",
+          location: a.location || "",
+          duration: a.duration || "",
+          category: a.category || "",
         })),
       };
-
     } catch (error: any) {
       console.error("❌ OpenAI error:", error.message);
-      
-      // If API key is missing/empty, return mock data instead of error
+
+      // Log specific error types but always return mock response
       if (!settings.OPENAI_API_KEY || settings.OPENAI_API_KEY === "") {
-        console.log("⚠️ No OpenAI API key, returning mock response");
-        return this._getMockResponse();
+        console.log("⚠️ No OpenAI API key configured, returning mock response");
+      } else if (error.status === 429 || error.code === "insufficient_quota") {
+        console.log("⚠️ OpenAI quota exceeded, returning mock response");
+      } else if (error.status === 401 || error.code === "invalid_api_key") {
+        console.log("⚠️ Invalid OpenAI API key, returning mock response");
+      } else {
+        console.log("⚠️ AI service error, returning mock response");
       }
-      
-      if (error.status === 429 || error.code === "insufficient_quota") {
-        throw new Error("AI_QUOTA_EXCEEDED");
-      }
-      if (error.status === 401 || error.code === "invalid_api_key") {
-        throw new Error("AI_INVALID_KEY");
-      }
-      
-      // For any other error, return mock response instead of empty results
-      console.log("⚠️ AI service error, falling back to mock response");
+
+      // Always return mock response instead of throwing errors
       return this._getMockResponse();
     }
   }
@@ -325,7 +345,9 @@ ${reviewsContext}`;
         response_format: { type: "json_object" },
       });
 
-      const result = JSON.parse(response.choices[0].message.content || '{"is_tenerife_related":true}');
+      const result = JSON.parse(
+        response.choices[0].message.content || '{"is_tenerife_related":true}',
+      );
       return result.is_tenerife_related !== false;
     } catch {
       return true; // permissive on error
@@ -338,7 +360,8 @@ ${reviewsContext}`;
       results: [
         {
           title: "Osservazione delle Stelle sul Teide",
-          description: "Vivi l'esperienza del cielo notturno dal Parco Nazionale del Teide. Tour guidato con telescopi professionali.",
+          description:
+            "Vivi l'esperienza del cielo notturno dal Parco Nazionale del Teide. Tour guidato con telescopi professionali.",
           price: "€55",
           duration: "4 ore",
           rating: "4.8/5",
@@ -349,7 +372,8 @@ ${reviewsContext}`;
         },
         {
           title: "Whale Watching & Dolphin Tour",
-          description: "Avvista balene pilota e delfini nel loro habitat naturale. Include snorkeling e pasto a bordo.",
+          description:
+            "Avvista balene pilota e delfini nel loro habitat naturale. Include snorkeling e pasto a bordo.",
           price: "€45",
           duration: "3 ore",
           rating: "4.7/5",
@@ -360,7 +384,8 @@ ${reviewsContext}`;
         },
         {
           title: "Siam Park - Biglietti Giornalieri",
-          description: "Il miglior parco acquatico del mondo con scivoli estremi, onde giganti e spiaggia artificiale.",
+          description:
+            "Il miglior parco acquatico del mondo con scivoli estremi, onde giganti e spiaggia artificiale.",
           price: "€40",
           duration: "Giornata intera",
           rating: "4.9/5",
@@ -371,7 +396,8 @@ ${reviewsContext}`;
         },
         {
           title: "Trekking nel Parco Rurale di Anaga",
-          description: "Escursione guidata nella foresta di laurisilva preistorica con viste spettacolari.",
+          description:
+            "Escursione guidata nella foresta di laurisilva preistorica con viste spettacolari.",
           price: "Gratis",
           duration: "5 ore",
           rating: "4.6/5",

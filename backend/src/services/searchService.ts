@@ -29,16 +29,19 @@ class SearchService {
         },
         {
           headers: { "Content-Type": "application/json" },
-        }
+        },
       );
 
       const results = response.data.results || [];
-      console.log(`[SearchService] Got ${results.length} results for: ${query}`);
+      console.log(
+        `[SearchService] Got ${results.length} results for: ${query}`,
+      );
 
       let context = "";
       for (const r of results) {
         const text = r.content || r.snippet || "";
-        if (text) context += `Title: ${r.title || ""}\nURL: ${r.url || ""}\nContent: ${text}\n\n`;
+        if (text)
+          context += `Title: ${r.title || ""}\nURL: ${r.url || ""}\nContent: ${text}\n\n`;
       }
       return context;
     } catch (error: any) {
@@ -51,7 +54,10 @@ class SearchService {
    * Search for a real image URL for a specific activity using Tavily with include_images=true.
    * Mirrors Python backend's search_image_for_activity exactly.
    */
-  async searchImageForActivity(title: string, location: string = ""): Promise<string | null> {
+  async searchImageForActivity(
+    title: string,
+    location: string = "",
+  ): Promise<string | null> {
     if (!settings.TAVILY_API_KEY) return null;
 
     const searchQuery = `Tenerife ${title} ${location}`.trim();
@@ -67,7 +73,7 @@ class SearchService {
           include_images: true,
           max_results: 3,
         },
-        { timeout: 5000 } // Reduced timeout to 5s to prevent long waits
+        { timeout: 5000 }, // Reduced timeout to 5s to prevent long waits
       );
 
       const images: string[] = response.data.images || [];
