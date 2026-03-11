@@ -531,7 +531,7 @@ export async function seedIfEmpty(): Promise<void> {
       language: "it",
       is_published: true,
       author_id: (admin as any).id,
-      images: JSON.stringify([art.image_url]),
+      images: [art.image_url], // Sequelize handles JSON serialization automatically
       created_at: d,
     } as any);
   }

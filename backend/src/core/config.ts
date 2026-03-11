@@ -49,7 +49,10 @@ export const settings: Settings = {
   CORS_ORIGINS: (() => {
     const corsEnv = process.env.CORS_ORIGINS?.trim();
     if (corsEnv) {
-      const parsed = corsEnv.split(",").map((o) => o.trim()).filter(Boolean);
+      const parsed = corsEnv
+        .split(",")
+        .map((o) => o.trim())
+        .filter(Boolean);
       if (parsed.length > 0) return parsed;
     }
     // Fallback includes production URL
