@@ -1,11 +1,8 @@
-# Project Documentation Files
+# Development folders (not needed in production)
 project_files/
-
-# Old Python Backend (deprecated)
 backend_old/
-
-# Temporary migration directories
 backend_new_files/
+.vs/
 
 # Backend
 backend/.env
@@ -14,18 +11,15 @@ backend/dist/
 backend/coverage/
 backend/data/
 backend/*.db
+backend/*.sqlite
 backend/test.db
 backend/.coverage
 backend/htmlcov/
 backend/__pycache__/
 backend/**/__pycache__/
 backend/.pytest_cache/
-backend/dist/
 backend/build/
 backend/*.egg-info/
-
-# IMPORTANTE: Non ignorare initial_data.json (serve per il deploy)
-!backend/initial_data.json
 
 # Frontend
 frontend/node_modules/
