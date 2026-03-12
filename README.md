@@ -2,7 +2,7 @@
 
 **Full-Stack AI-Powered Platform for Smart Tourism Activity Discovery**
 
-## Live Demo: https://master-start2impact.onrender.com
+## Live Demo: https://tenerife-frontend.onrender.com
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
@@ -115,7 +115,7 @@ npm run dev
 ## Key Metrics
 
 - **20+ Blog Articles** with AI-structured content
-- **100+ Smart Sections** across all articles  
+- **100+ Smart Sections** across all articles
 - **4 Language Variants** with full localization
 - **95.8% Frontend Test Coverage** on critical paths
 - **88% Backend Test Coverage** on all endpoints
@@ -208,15 +208,15 @@ Interfaccia mobile-first con animazioni fluide e supporto per dark mode.
 
 ### Backend
 
-| Technology   | Version | Purpose            |
-| ------------ | ------- | ------------------ |
-| Node.js      | 18+     | Runtime            |
-| TypeScript   | 5.3+    | Language           |
-| Express      | 4.18+   | Web framework      |
-| Sequelize    | 6.35+   | ORM                |
-| Zod          | 3.22+   | Data validation    |
-| jsonwebtoken | 9.0+    | JWT tokens         |
-| bcryptjs     | 2.4+    | Password hashing   |
+| Technology   | Version | Purpose          |
+| ------------ | ------- | ---------------- |
+| Node.js      | 18+     | Runtime          |
+| TypeScript   | 5.3+    | Language         |
+| Express      | 4.18+   | Web framework    |
+| Sequelize    | 6.35+   | ORM              |
+| Zod          | 3.22+   | Data validation  |
+| jsonwebtoken | 9.0+    | JWT tokens       |
+| bcryptjs     | 2.4+    | Password hashing |
 
 ### Infrastruttura & Testing
 
@@ -323,11 +323,9 @@ docker-compose up --build
 
    ```bash
    cd backend
-   python -m venv venv
-   venv\Scripts\activate
-   pip install -r requirements.txt
-   copy .env.example .env
-   python -m uvicorn main:app --reload
+   npm install
+   # Create .env file with API keys
+   npm run dev
    ```
 
 2. **Frontend:**
@@ -336,6 +334,11 @@ docker-compose up --build
    npm install
    npm run dev
    ```
+
+**Risultato:**
+
+- Backend: http://localhost:8000
+- Frontend: http://localhost:5173
 
 Per istruzioni dettagliate, vedi [SETUP.md](project_files/SETUP.md)
 
@@ -445,8 +448,7 @@ CREATE TABLE saved_articles (
 
 ```bash
 cd backend
-pip install package-name
-pip freeze > requirements.txt
+npm install package-name
 ```
 
 **Frontend:**
@@ -462,8 +464,8 @@ npm install package-name
 
 ```bash
 cd backend
-pytest tests/
-pytest --cov=app tests/  # Con copertura (88%)
+npm test
+npm run test:coverage  # Con copertura (88%)
 ```
 
 **Frontend:**
@@ -478,7 +480,7 @@ npm run test:coverage  # Con copertura (95%)
 
 ### Copertura Test
 
-- **Backend**: **88% di copertura** con pytest
+- **Backend**: **88% di copertura** con Jest
   - Endpoint autenticazione: 100%
   - Endpoint blog: 92%
   - Endpoint ricerca: 85%
@@ -495,8 +497,17 @@ npm run test:coverage  # Con copertura (95%)
 
 ```bash
 cd backend
-pytest --cov=app tests/
-pytest --cov=app --cov-report=html tests/  # Report HTML
+npm test
+npm run test:coverage  # Report HTML con coverage
+```
+
+**Frontend (con report di copertura):**
+
+```bash
+cd frontend
+npm run test:coverage  # Report HTML in coverage/
+```
+
 ## Implementazione della Sicurezza
 
 ### Autenticazione
@@ -515,7 +526,7 @@ pytest --cov=app --cov-report=html tests/  # Report HTML
 
 ### Protezione Dati
 
-- **SQL Injection**: Protezione tramite ORM SQLAlchemy con query parametrizzate
+- **SQL Injection**: Protezione tramite ORM Sequelize con query parametrizzate
 - **XSS**: Protezione tramite escape automatico React
 - **CSRF**: Token CSRF su richieste state-changing
 - **HTTPS**: Configurazione Nginx con SSL/TLS (produzione)
@@ -526,11 +537,13 @@ pytest --cov=app --cov-report=html tests/  # Report HTML
 ⚠️ **IMPORTANTE**: Le API keys presenti nel file `docker-compose.yml` sono **temporanee** e utilizzate esclusivamente per la **valutazione accademica**.
 
 **Dopo la revisione del professore:**
+
 1. Le chiavi verranno immediatamente invalidate e rigenerate
 2. Il progetto verrà configurato con gestione sicura dei secrets
 3. Le nuove chiavi saranno gestite tramite variabili d'ambiente e secret managers
 
 **Best Practices Implementate:**
+
 - `.gitignore` configurato per escludere file `.env`
 - `.env.example` fornito come template sicuro
 - Documentazione completa sulla gestione sicura delle credenziali
@@ -549,7 +562,7 @@ pytest --cov=app --cov-report=html tests/  # Report HTML
 
 ### Protezione Dati
 
-- SQL Injection: protezione tramite ORM SQLAlchemy
+- SQL Injection: protezione tramite ORM Sequelize
 - XSS: protezione tramite escape React
 - CSRF: token CSRF su richieste state-changing
 - HTTPS: configurazione Nginx con SSL/TLS
@@ -572,9 +585,6 @@ Le contribuzioni sono benvenute! Per cambiamenti significativi:
 
 Questo progetto è concesso in licenza sotto la Licenza MIT - vedi il file LICENSE per i dettagli.
 
----
+```
 
-**Ultima Aggiornamento**: 7 Dicembre 2025
-**Versione**: 1.0.0
-**Status**: ✅ Pronto per Valutazione
 ```
