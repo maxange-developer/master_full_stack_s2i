@@ -501,8 +501,8 @@ export async function seedIfEmpty(): Promise<void> {
   // Admin user
   const hashedPw = await bcrypt.hash("admin123", 10);
   const admin = await User.create({
-    email: "admin@tenerife.com",
-    full_name: "Admin Tenerife",
+    email: "admin@admin.com",
+    full_name: "Admin",
     hashed_password: hashedPw,
     is_active: true,
     is_admin: true,
@@ -510,10 +510,10 @@ export async function seedIfEmpty(): Promise<void> {
   } as any);
 
   // Test user
-  const userPw = await bcrypt.hash("user123", 10);
+  const userPw = await bcrypt.hash("test123", 10);
   await User.create({
-    email: "user@tenerife.com",
-    full_name: "Utente Test",
+    email: "test@test.com",
+    full_name: "Test User",
     hashed_password: userPw,
     is_active: true,
     is_admin: false,
