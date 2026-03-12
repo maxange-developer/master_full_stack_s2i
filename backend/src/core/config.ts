@@ -46,7 +46,7 @@ export const settings: Settings = {
     }
     // Fallback includes production URL
     return [
-      "https://master-start2impact.onrender.com",
+      "https://tenerife-frontend.onrender.com",
       "http://localhost:5173",
       "http://localhost:3000",
     ];
