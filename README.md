@@ -1,12 +1,12 @@
 # Tenerife AI Activity Finder
 
-**Una Piattaforma Full-Stack Alimentata da AI per la Scoperta Intelligente di Attività Turistiche**
+**Full-Stack AI-Powered Platform for Smart Tourism Activity Discovery**
 
-## Link: https://master-s2i.netlify.app
+## Live Demo: https://master-start2impact.onrender.com
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 
 ---
 
@@ -21,22 +21,19 @@
 
 **Alternativa (Configurazione Manuale):**
 
-- Python 3.10+ | Node.js 18+ | Git
+- Node.js 18+ | Git
 
 ### Opzione 1: Docker (Consigliata - Più Facile)
 
 ```bash
-# Clona e naviga
-git clone https://github.com/TUO_USERNAME/tenerife-ai-finder.git
-cd tenerife-ai-finder
+# Clone repository
+git clone https://github.com/maxange-developer/master_full_stack_s2i.git
+cd master_full_stack_s2i
 
-# Copia il template dell'ambiente e aggiungi le chiavi API fornite
-copy .env.example .env
-
-# Avvia tutto con Docker (il database verrà caricato automaticamente)
+# Start with Docker
 docker-compose up --build
 
-# Visita: http://localhost:5173
+# Visit: http://localhost:5173
 ```
 
 **Risultato:**
@@ -48,15 +45,13 @@ docker-compose up --build
 ### Opzione 2: Sviluppo Locale (Per Apprendimento)
 
 ```bash
-# Setup Backend
+# Backend setup
 cd backend
-python -m venv venv
-venv\Scripts\activate  # o: source venv/bin/activate su macOS/Linux
-pip install -r requirements.txt
-copy .env.example .env  # Aggiungi le chiavi API fornite dallo sviluppatore
-python -m uvicorn main:app --reload
+npm install
+# Add .env file with API keys
+npm run dev
 
-# Setup Frontend (nuovo terminale)
+# Frontend setup (new terminal)
 cd frontend
 npm install
 npm run dev
@@ -108,25 +103,25 @@ npm run dev
 
 ## Riepilogo Esecutivo
 
-**Tenerife AI Activity Finder** è un'applicazione web full-stack sofisticata che sfrutta l'intelligenza artificiale e algoritmi di ricerca avanzati per consigliare attività turistiche personalizzate sull'Isola di Tenerife. La piattaforma combina:
+**Tenerife AI Activity Finder** is a sophisticated full-stack web application that leverages artificial intelligence and advanced search algorithms to recommend personalized tourist activities on Tenerife Island. The platform combines:
 
-- **Strutturazione Intelligente degli Articoli**: Organizzazione automatica dei contenuti utilizzando modelli GPT di OpenAI
-- **Ricerca Web Intelligente**: Scoperta in tempo reale di attività tramite il motore di ricerca AI Tavily
-- **Supporto Multilingue**: Implementazione completa i18n che supporta ES, EN, DE, FR
-- **Caratteristiche Incentrate sull'Utente**: Autenticazione, segnalibri, articoli salvati, raccomandazioni personalizzate
-- **Blog Professionale**: Gestione avanzata dei contenuti con layout di articoli strutturati e gallerie di immagini
-- **Design Reattivo**: Interfaccia mobile-first con CSS Tailwind e animazioni Framer Motion
+- **Smart Article Structuring**: Automatic content organization using OpenAI GPT models
+- **Intelligent Web Search**: Real-time activity discovery via Tavily AI search engine
+- **Multilingual Support**: Complete i18n implementation supporting ES, EN, DE, FR
+- **User-Centric Features**: Authentication, bookmarks, saved articles, personalized recommendations
+- **Professional Blog**: Advanced content management with structured article layouts and image galleries
+- **Responsive Design**: Mobile-first interface with Tailwind CSS and Framer Motion animations
 
-### Metriche Chiave
+## Key Metrics
 
-- **20+ Articoli Blog** con contenuti strutturati da AI
-- **100+ Sezioni Intelligenti** su tutti gli articoli
-- **4 Varianti Linguistiche** con localizzazione completa
-- **95.8% Copertura Test Frontend** sui percorsi critici
-- **88% Copertura Test Backend** su tutti gli endpoint
-- **Tempi di Risposta API < 500ms** in media
-- **21 Moduli Backend** completamente documentati in inglese
-- **25 Componenti Frontend** con commenti professionali
+- **20+ Blog Articles** with AI-structured content
+- **100+ Smart Sections** across all articles  
+- **4 Language Variants** with full localization
+- **95.8% Frontend Test Coverage** on critical paths
+- **88% Backend Test Coverage** on all endpoints
+- **API Response Times < 500ms** average
+- **Node.js + TypeScript** modern backend architecture
+- **25 Frontend Components** with professional comments
 
 ---
 
@@ -148,11 +143,11 @@ npm run dev
          │ (Axios)        │
          │                │
 ┌────────▼────────────────────────────────────────────────────┐
-│             Backend (FastAPI)                                │
-│  - FastAPI 0.104+                                            │
-│  - ORM SQLAlchemy                                            │
-│  - Autenticazione JWT                                        │
-│  - Middleware CORS                                           │
+│         Backend (Node.js + TypeScript)                       │
+│  - Express 4.18+                                             │
+│  - Sequelize ORM                                             │
+│  - JWT Authentication                                        │
+│  - CORS Middleware                                           │
 ├────────────────────────────────────────────────────────────┤
 │  Servizi Principali:                                         │
 │  • Autenticazione e Autorizzazione                          │
@@ -213,14 +208,15 @@ Interfaccia mobile-first con animazioni fluide e supporto per dark mode.
 
 ### Backend
 
-| Tecnologia | Versione | Scopo            |
-| ---------- | -------- | ---------------- |
-| FastAPI    | 0.104+   | Framework web    |
-| SQLAlchemy | 2.0+     | ORM per database |
-| Pydantic   | 2.5+     | Validazione dati |
-| JOSE       | Latest   | Token JWT        |
-| Passlib    | Latest   | Hashing password |
-| Python     | 3.10+    | Linguaggio       |
+| Technology   | Version | Purpose            |
+| ------------ | ------- | ------------------ |
+| Node.js      | 18+     | Runtime            |
+| TypeScript   | 5.3+    | Language           |
+| Express      | 4.18+   | Web framework      |
+| Sequelize    | 6.35+   | ORM                |
+| Zod          | 3.22+   | Data validation    |
+| jsonwebtoken | 9.0+    | JWT tokens         |
+| bcryptjs     | 2.4+    | Password hashing   |
 
 ### Infrastruttura & Testing
 
@@ -228,10 +224,10 @@ Interfaccia mobile-first con animazioni fluide e supporto per dark mode.
 | -------------- | -------- | --------------------- |
 | Docker         | 20.10+   | Containerizzazione    |
 | Docker Compose | 1.29+    | Orchestrazione        |
-| PostgreSQL     | 15+      | Database (produzione) |
-| SQLite         | 3+       | Database (sviluppo)   |
-| Pytest         | 7.4+     | Test backend          |
-| Vitest         | 4.0+     | Test frontend         |
+| PostgreSQL     | 15+      | Database (production) |
+| SQLite         | 3+       | Database (dev)        |
+| Jest           | 29+      | Backend testing       |
+| Vitest         | 4.0+     | Frontend testing      |
 
 ---
 
@@ -239,39 +235,38 @@ Interfaccia mobile-first con animazioni fluide e supporto per dark mode.
 
 ```
 tenerife-ai-finder/
-├── backend/                          # FastAPI application
-│   ├── main.py                       # Entry point (50 righe, documentato)
-│   ├── requirements.txt              # Dipendenze Python
-│   ├── Dockerfile                    # Containerizzazione backend
-│   ├── app/
+├── backend/                          # Node.js + TypeScript backend
+│   ├── src/
+│   │   ├── index.ts                  # Entry point
 │   │   ├── core/
-│   │   │   ├── config.py             # Configurazione (70 righe, documentato)
-│   │   │   ├── database.py           # Setup SQLAlchemy (29 righe, documentato)
-│   │   │   └── security.py           # JWT e password hashing (68 righe, documentato)
-│   │   ├── models/                   # Modelli SQLAlchemy
-│   │   │   ├── user.py               # Modello Utente
-│   │   │   ├── blog.py               # Modelli Blog
-│   │   │   └── search.py             # Modello Ricerca
-│   │   ├── schemas/                  # Schema Pydantic per validazione
-│   │   │   ├── user.py
-│   │   │   ├── blog.py
-│   │   │   └── search.py
+│   │   │   ├── config.ts             # Configuration
+│   │   │   ├── database.ts           # Sequelize setup
+│   │   │   └── security.ts           # JWT & password
+│   │   ├── models/                   # Sequelize models
+│   │   │   ├── user.ts
+│   │   │   └── blog.ts
+│   │   ├── schemas/                  # Zod validation
+│   │   │   ├── user.ts
+│   │   │   ├── blog.ts
+│   │   │   └── search.ts
 │   │   ├── api/
 │   │   │   ├── endpoints/
-│   │   │   │   ├── auth.py           # Rotte autenticazione
-│   │   │   │   ├── blog.py           # Rotte blog
-│   │   │   │   └── search.py         # Rotte ricerca
-│   │   │   └── deps.py               # Dipendenze
-│   │   ├── services/                 # Logica di business
-│   │   │   ├── ai_service.py         # Integrazione OpenAI
-│   │   │   ├── article_structure_service.py
-│   │   │   └── search_service.py     # Integrazione Tavily
-│   │   └── tests/                    # Test unitari (88% copertura)
-│   └── scripts/
-│       ├── import_blog_articles.py
-│       ├── create_admin.py
-│       ├── structure_articles.py
-│       └── update_article_images.py
+│   │   │   │   ├── auth.ts           # Auth routes
+│   │   │   │   ├── blog.ts           # Blog routes
+│   │   │   │   └── search.ts         # Search routes
+│   │   │   └── deps.ts                # Dependencies
+│   │   ├── services/                 # Business logic
+│   │   │   ├── aiService.ts          # OpenAI integration
+│   │   │   ├── articleStructureService.ts
+│   │   │   └── searchService.ts      # Tavily integration
+│   │   ├── middlewares/
+│   │   │   └── errorHandler.ts
+│   │   └── utils/
+│   │       └── seedIfEmpty.ts        # Auto-seed DB
+│   ├── tests/                        # Unit tests (88% coverage)
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── Dockerfile
 │
 ├── frontend/                         # React + Vite application
 │   ├── package.json                  # Dipendenze Node
@@ -290,10 +285,11 @@ tenerife-ai-finder/
 │   │   └── tests/                    # Test componenti (95% copertura)
 │   └── public/                       # Asset statici
 │
-├── Configurazione Docker
-│   ├── docker-compose.yml            # Orchestrazione servizi
-│   ├── nginx.conf                    # Proxy inverso
-│   └── backend/Dockerfile
+├── Docker Configuration
+│   ├── docker-compose.yml            # Service orchestration
+│   ├── render.yaml                   # Render.com deployment
+│   ├── nginx.conf                    # Reverse proxy
+│   ├── backend/Dockerfile
 │   └── frontend/Dockerfile
 │
 ├── Configurazione Git
