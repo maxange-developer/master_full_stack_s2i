@@ -4,6 +4,13 @@
 
 ## Live Demo: https://tenerife-frontend.onrender.com
 
+### 🔑 Credenziali Demo
+
+Per testare tutte le funzionalità (articoli salvati, preferenze utente):
+
+- **Admin**: `admin@admin.com` / `admin123`
+- **Test User**: `test@test.com` / `test123`
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js 18+](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
